@@ -1,0 +1,39 @@
+server:
+  port: 8528
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/hal+json,application/json
+logging:
+  level:
+    org.springframework.app.security: DEBUG
+    net.sf.ehcache: DEBUG
+    org.apache.kafka: WARN
+spring:
+  main.allow-bean-definition-overriding: true
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    property-naming-strategy: SNAKE_CASE
+    deserialization:
+      accept-single-value-as-array: true
+      fail_on_invalid_subtype: false
+springdoc.api-docs.enabled: true
+springdoc.swagger-ui.enabled: true
+springdoc.swagger-ui.path: /doc/swagger-ui.html
+---
+spring.config.activate.on-profile: dev
+spring.data:
+  mongodb:
+    database: weather_db
+    uri: mongodb://root:password@localhost:27029/weather_db?authSource=admin
+
+---
+
+spring.config.activate.on-profile: docker-compose
+spring.data:
+  mongodb:
+    database: weather_db
+    uri: mongodb://root:password@db-mongo:27017/weather_db?authSource=admin
+
+
+
