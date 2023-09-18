@@ -75,7 +75,7 @@ Follow these steps to install and run the Weather Data API:
 5. After container running you can run a script to populate/querying the database via the application
 
    ```bash
-   source populate_db.sh
+   source run-demo.sh
    ```
 
 ## Usage
